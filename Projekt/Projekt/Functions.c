@@ -1,16 +1,15 @@
 #include "Functions.h"
 
-void createArray(char** tomb, int n)
+void createArray(char* tomb, int n)
 {
-	char* auxtomb;
-	auxtomb = (char*)calloc(n, sizeof(char));
-	if (!(auxtomb)) {
+	tomb = (char*)calloc(n, sizeof(char));
+	if (!(tomb)) {
 		printf("Sikertelen helyfoglalas");
 	}
-	*tomb = auxtomb;
+	
 }
 
-void ReadArrayfromFile(const char* filename, char** tomb, int* n)
+void ReadArrayfromFile(const char* filename, char* tomb, int* n)
 {
 	FILE* f;
 	f = fopen(filename, "wt");
@@ -18,21 +17,18 @@ void ReadArrayfromFile(const char* filename, char** tomb, int* n)
 		printf("Sikertelen");
 		exit(1);
 	}
-	char* auxtomb;
-	int auxn;
-	fscanf(f, "%i", &auxn);
-	createArray(&auxtomb, auxn);
-	for (int i = 0; i < auxn; i++) {
-		fscanf(f, "[^\n]", &auxtomb[i]);
+	fscanf(f, "%i", &n);
+	createArray(&tomb, n);
+	for (int i = 0; i < n; i++) {
+		fscanf(f, "[^\n]", &tomb[i]);
 	}
-	*tomb = auxtomb;
-	*n = auxn;
+	
 }
 
 void PrintArray(char* tomb, int n)
 {
 	for (int i = 0; i < n; i++) {
-		printf("%s", tomb[i]);
+		printf("%[^\n]", tomb[i]);
 	}
 
 }
