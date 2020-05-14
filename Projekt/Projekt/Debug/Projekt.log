@@ -1,4 +1,11 @@
 ﻿  Source.c
 C:\Users\Kata\Documents\GitHub\Projekt1\Projekt\Projekt\Functions.c(14,18): warning C4244: 'function': conversion from 'time_t' to 'unsigned int', possible loss of data
 C:\Users\Kata\Documents\GitHub\Projekt1\Projekt\Projekt\Functions.c(78,7): warning C4013: 'getch' undefined; assuming extern returning int
-C:\Users\Kata\Documents\GitHub\Projekt1\Projekt\Projekt\Source.c(8): error C4700: uninitialized local variable 'tippelt_betu' used
+C:\Users\Kata\Documents\GitHub\Projekt1\Projekt\Projekt\Source.c(5,7): warning C4101: 'tippelt_betu': unreferenced local variable
+  LINK : C:\Users\Kata\Documents\GitHub\Projekt1\Projekt\Debug\Projekt.exe not found or not built by the last incremental link; performing full link
+Source.obj : error LNK2005: _betu_betevese_ellenorzese already defined in Functions.obj
+Source.obj : error LNK2005: _betu_teszteles already defined in Functions.obj
+Source.obj : error LNK2005: _csillagga_alakitas already defined in Functions.obj
+Source.obj : error LNK2005: _szo_beolvasasa_allomanybol already defined in Functions.obj
+Source.obj : error LNK2019: unresolved external symbol _kiiratas referenced in function _main
+C:\Users\Kata\Documents\GitHub\Projekt1\Projekt\Debug\Projekt.exe : fatal error LNK1120: 1 unresolved externals

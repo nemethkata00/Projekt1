@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1589484583 source:c:\users\kata\documents\github\projekt1\jatekprojekt\main.c
+	"Functions.c"
+	<stdio.h>
+	<stdlib.h>
+
+1589484791 c:\users\kata\documents\github\projekt1\jatekprojekt\functions.c
+	"Functions.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+
+1589484406 c:\users\kata\documents\github\projekt1\jatekprojekt\functions.h
+	<stdio.h>
+	<stdbool.h>
+
