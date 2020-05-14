@@ -1,1 +1,4 @@
-﻿  Projekt.vcxproj -> C:\Users\Kata\Documents\GitHub\Projekt1\Projekt\Debug\Projekt.exe
+﻿  Source.c
+C:\Users\Kata\Documents\GitHub\Projekt1\Projekt\Projekt\Functions.c(14,18): warning C4244: 'function': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Kata\Documents\GitHub\Projekt1\Projekt\Projekt\Functions.c(78,7): warning C4013: 'getch' undefined; assuming extern returning int
+C:\Users\Kata\Documents\GitHub\Projekt1\Projekt\Projekt\Source.c(8): error C4700: uninitialized local variable 'tippelt_betu' used
