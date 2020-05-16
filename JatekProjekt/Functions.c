@@ -30,6 +30,7 @@ void csillagga_alakitas(char szo[20], char titkos_szo[20])
 			titkos_szo[i] = ' ';
 		}
 	}
+	titkos_szo[length] = '\0';
 }
 
 int betu_teszteles(char tippelt_betu, char titkos_szo[20], char szo[20])
@@ -49,7 +50,7 @@ int betu_teszteles(char tippelt_betu, char titkos_szo[20], char szo[20])
 
 void betu_betevese_ellenorzese(char tippelt_betu, char szo[20], char titkos_szo[20])
 {
-	int rossz_talalatok_szama = 0, Max_talalat;
+	int rossz_talalatok_szama = 0, Max_talalat, pont=0;
 	Max_talalat = strlen(szo) + 1;
 	while (rossz_talalatok_szama < Max_talalat) {
 		printf("%s", titkos_szo);
@@ -68,15 +69,42 @@ void betu_betevese_ellenorzese(char tippelt_betu, char szo[20], char titkos_szo[
 
 		if (strcmp(szo, titkos_szo) == 0) {
 			printf("%s\n", szo);
-			printf("Ezaz! Kitalaltad!");
+			printf("Ezaz! Kitalaltad!\n");
+			pont+= Max_talalat-rossz_talalatok_szama;
+			printf("%i pontod lett", pont);
 			break;
 		}
 	}
 	if (rossz_talalatok_szama == Max_talalat) {
-		printf("Vesztettel!");
+		printf("Vesztettel! 0 pontod van");
 		printf("A szo a kovetketo volt: %s\n", szo);
 	}
 	getch();
+}
+void menu(char szo[20]){
+    char a, titkos_szo[20], tippelt_betu;
+    bool f=true;
+    while(f){
+        printf("Jatek szabaly(s)\nKonnyu(e)\nKozepes(m)\nNehez(h)\nValassz egy nehezsegi szintet: \n\n");
+        a=getche();
+        printf("\n");
+        switch(a){
+            case 's' : printf("               JATEK SZABALY\n");
+                       printf("A jatek lenyege, hogy kitalald a csillagok mogott rejtozkodo szot."); break;
+            case 'e' : szo_beolvasasa_allomanybol("be1.txt", szo);
+                       csillagga_alakitas(szo, titkos_szo);
+                       betu_betevese_ellenorzese(tippelt_betu, szo, titkos_szo); break;
+            case 'm' : szo_beolvasasa_allomanybol("be2.txt", szo);
+                       csillagga_alakitas(szo, titkos_szo);
+                       betu_betevese_ellenorzese(tippelt_betu, szo, titkos_szo); break;
+            case 'h' : szo_beolvasasa_allomanybol("be3.txt", szo);
+                       csillagga_alakitas(szo, titkos_szo);
+                       betu_betevese_ellenorzese(tippelt_betu, szo, titkos_szo); break;
+            default : f=false; break;
+
+
+        }
+    }
 }
 
 /*void kiiratas(char szo[20])
