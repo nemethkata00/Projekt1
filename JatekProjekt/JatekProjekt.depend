@@ -4,14 +4,18 @@
 	<stdio.h>
 	<stdlib.h>
 
-1589650905 c:\users\kata\documents\github\projekt1\jatekprojekt\functions.c
+1589754170 c:\users\kata\documents\github\projekt1\jatekprojekt\functions.c
 	"Functions.h"
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<time.h>
+	<windows.h>
 
-1589650341 c:\users\kata\documents\github\projekt1\jatekprojekt\functions.h
+1589753526 c:\users\kata\documents\github\projekt1\jatekprojekt\functions.h
 	<stdio.h>
 	<stdbool.h>
+	<string.h>
+	<time.h>
+	<windows.h>
 

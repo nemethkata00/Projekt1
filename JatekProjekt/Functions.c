@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <windows.h>
 void szo_beolvasasa_allomanybol(const char* filename, char szo[20])
 {
 	FILE* f;
@@ -23,7 +24,7 @@ void csillagga_alakitas(char szo[20], char titkos_szo[20])
 {
 	int length = strlen(szo);
 	for (int i = 0; i < length; i++) {
-		if (titkos_szo[i] != ' ') {
+		if (szo[i] != ' ') {
 			titkos_szo[i] = '*';
 		}
 		else {
@@ -55,22 +56,27 @@ void betu_betevese_ellenorzese(char tippelt_betu, char szo[20], char titkos_szo[
 	while (rossz_talalatok_szama < Max_talalat) {
 		printf("%s", titkos_szo);
 		printf("\n\nTippelj egy betut: ");
-		scanf("%c", &tippelt_betu);
+		tippelt_betu = getch();
 		tippelt_betu=toupper(tippelt_betu);
+		printf("%c",tippelt_betu);
 		fflush(stdin);
 		if (betu_teszteles(tippelt_betu, szo, titkos_szo) == 0) {
+            red();
 			printf("\nEz a betu nem talalhato meg a szoban. \n");
+            white();
 			rossz_talalatok_szama++;
 		}
 		else {
+            green();
 			printf("\nSzuper!Kitalaltal egy betut, csak igy tovabb!\n");
+            white();
 		}
 		printf("Meg van %i talalatod.\n", Max_talalat - rossz_talalatok_szama);
 
 		if (strcmp(szo, titkos_szo) == 0) {
 			printf("%s\n", szo);
 			printf("Ezaz! Kitalaltad!\n");
-			pont+= Max_talalat-rossz_talalatok_szama;
+			pont+= (Max_talalat-rossz_talalatok_szama);
 			printf("%i pontod lett", pont);
 			break;
 		}
@@ -80,32 +86,113 @@ void betu_betevese_ellenorzese(char tippelt_betu, char szo[20], char titkos_szo[
 		printf("A szo a kovetketo volt: %s\n", szo);
 	}
 	getch();
+	return 0;
 }
 void menu(char szo[20]){
     char a, titkos_szo[20], tippelt_betu;
-    bool f=true;
+    bool f = true;
+    clrscr();
     while(f){
-        printf("Jatek szabaly(s)\nKonnyu(e)\nKozepes(m)\nNehez(h)\nValassz egy nehezsegi szintet: \n\n");
-        a=getche();
+        cyanblue();
+        printf("Jatek szabaly(s)\n\n");
+        yellow();
+        printf("SZINTEK:\n");
+        green();
+        printf("   Konnyu(e)\n");
+        white();
+        printf("   Kozepes(m)\n");
+        purple();
+        printf("   Nehez(h)\n\n");
+        red();
+        printf("Kilepes(q)\n");
+        white();
+        printf("Valassz: \n\n");
+        a=getch();
         printf("\n");
         switch(a){
-            case 's' : printf("               JATEK SZABALY\n");
-                       printf("A jatek lenyege, hogy kitalald a csillagok mogott rejtozkodo szot."); break;
-            case 'e' : szo_beolvasasa_allomanybol("be1.txt", szo);
-                       csillagga_alakitas(szo, titkos_szo);
-                       betu_betevese_ellenorzese(tippelt_betu, szo, titkos_szo); break;
-            case 'm' : szo_beolvasasa_allomanybol("be2.txt", szo);
-                       csillagga_alakitas(szo, titkos_szo);
-                       betu_betevese_ellenorzese(tippelt_betu, szo, titkos_szo); break;
-            case 'h' : szo_beolvasasa_allomanybol("be3.txt", szo);
-                       csillagga_alakitas(szo, titkos_szo);
-                       betu_betevese_ellenorzese(tippelt_betu, szo, titkos_szo); break;
-            default : f=false; break;
+            case 's' :{
+                       jatek_szabaly();
+                       break;
+            }
 
+            case 'e' : {
+                       clrscr();
+                       szo_beolvasasa_allomanybol("be1.txt", szo);
+                       csillagga_alakitas(szo, titkos_szo);
+                       betu_betevese_ellenorzese(tippelt_betu, szo, titkos_szo);
+                       break;
+            }
+
+            case 'm' : {
+                       clrscr();
+                       szo_beolvasasa_allomanybol("be2.txt", szo);
+                       csillagga_alakitas(szo, titkos_szo);
+                       betu_betevese_ellenorzese(tippelt_betu, szo, titkos_szo);
+                       break;
+            }
+
+            case 'h' : {
+                       clrscr();
+                       szo_beolvasasa_allomanybol("be3.txt", szo);
+                       csillagga_alakitas(szo, titkos_szo);
+                       betu_betevese_ellenorzese(tippelt_betu, szo, titkos_szo);
+                       break;
+            }
+
+            case 'q': {
+                       clrscr();
+                       green();
+                       printf("Koszi a jatekot!");
+                       white();
+                       exit(0);
+                       break;
+            }
+            default :{
+                       f=false;
+                       break;
+            }
 
         }
     }
 }
+void jatek_szabaly(){
+    printf("               JATEK SZABALY\n");
+    printf("A jatek lenyege, hogy kitalald a csillagok mogott rejtozkodo szot.");
+}
+
+void clrscr(){
+    system("@cls||clear");
+}
+
+void red (){
+    printf("\033[1;31m");
+}
+
+void yellow(){
+    printf("\033[1;33m");
+}
+
+void cyanblue(){
+    printf("\033[0;36m");
+}
+
+void green(){
+    printf("\033[0;32m");
+}
+
+void purple(){
+    printf("\033[0;35m");
+}
+
+void boldpink(){
+    printf("\033[1;35m");
+}
+
+void white(){
+    printf("\033[0m");
+}
+
+
 
 /*void kiiratas(char szo[20])
 {

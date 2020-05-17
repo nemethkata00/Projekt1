@@ -6,6 +6,9 @@
 #define WIN32_LEAN_AND_MEAN
 #include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
+#include <time.h>
+#include <windows.h>
 
 void szo_beolvasasa_allomanybol(const char* filename, char szo[20]);
 
@@ -17,6 +20,25 @@ void betu_betevese_ellenorzese(char tippelt_betu, char szo[20], char titkos_szo[
 
 void menu(char szo[20]);
 
-void kiiratas(char szo[20]);
+void jatek_szabaly();
+
+void clrscr();
+
+void red ();
+
+void yellow();
+
+void cyanblue();
+
+void green();
+
+void purple();
+
+void boldpink();
+
+void reset();
+
+
+///void kiiratas(char szo[20]);
 
 #endif // FUNCTIONS_H_INCLUDED
