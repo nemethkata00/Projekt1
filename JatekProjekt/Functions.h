@@ -52,6 +52,4 @@ void boldpink();
 ///feher.
 void white();
 
-
-
 #endif // FUNCTIONS_H_INCLUDED

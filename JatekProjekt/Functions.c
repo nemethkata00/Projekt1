@@ -81,7 +81,7 @@ void betu_betevese_ellenorzese(char tippelt_betu, char szo[20], char titkos_szo[
 			printf("%s\n", szo);
 			printf("Ezaz! Kitalaltad!\n");
 			pont+= (Max_talalat-rossz_talalatok_szama);
-			printf("%i pontod lett", pont);
+			printf("%i pontod lett\n\n", pont);
 			break;
 		}
 	}
