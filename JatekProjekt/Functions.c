@@ -4,6 +4,8 @@
 #include <string.h>
 #include <time.h>
 #include <windows.h>
+
+
 void szo_beolvasasa_allomanybol(const char* filename, char szo[20])
 {
 	FILE* f;
@@ -13,12 +15,13 @@ void szo_beolvasasa_allomanybol(const char* filename, char szo[20])
 		printf("Sikertelen allomanymegnyitas");
 	}
 	srand(time(NULL));
-	random = rand() % 10 + 1;
+	random = rand() % 56 + 1;
 	while (sorszam <= random && fscanf(f, "%s", szo)!=EOF) {
 		sorszam++;
 	}
 	fclose(f);
 }
+
 
 void csillagga_alakitas(char szo[20], char titkos_szo[20])
 {
@@ -33,6 +36,7 @@ void csillagga_alakitas(char szo[20], char titkos_szo[20])
 	}
 	titkos_szo[length] = '\0';
 }
+
 
 int betu_teszteles(char tippelt_betu, char titkos_szo[20], char szo[20])
 {
@@ -49,17 +53,17 @@ int betu_teszteles(char tippelt_betu, char titkos_szo[20], char szo[20])
 	return talalat;
 }
 
+
 void betu_betevese_ellenorzese(char tippelt_betu, char szo[20], char titkos_szo[20])
 {
 	int rossz_talalatok_szama = 0, Max_talalat, pont=0;
-	Max_talalat = strlen(szo) + 1;
+	Max_talalat = strlen(szo) + 3;
 	while (rossz_talalatok_szama < Max_talalat) {
 		printf("%s", titkos_szo);
 		printf("\n\nTippelj egy betut: ");
 		tippelt_betu = getch();
 		tippelt_betu=toupper(tippelt_betu);
 		printf("%c",tippelt_betu);
-		fflush(stdin);
 		if (betu_teszteles(tippelt_betu, szo, titkos_szo) == 0) {
             red();
 			printf("\nEz a betu nem talalhato meg a szoban. \n");
@@ -68,7 +72,7 @@ void betu_betevese_ellenorzese(char tippelt_betu, char szo[20], char titkos_szo[
 		}
 		else {
             green();
-			printf("\nSzuper!Kitalaltal egy betut, csak igy tovabb!\n");
+			printf("\nSzuper!Kitalaltal egy betut, csak igy tovabb! \n");
             white();
 		}
 		printf("Meg van %i talalatod.\n", Max_talalat - rossz_talalatok_szama);
@@ -82,26 +86,29 @@ void betu_betevese_ellenorzese(char tippelt_betu, char szo[20], char titkos_szo[
 		}
 	}
 	if (rossz_talalatok_szama == Max_talalat) {
-		printf("Vesztettel! 0 pontod van");
+		printf("Vesztettel! 0 pontod van" );
 		printf("A szo a kovetketo volt: %s\n", szo);
 	}
-	getch();
+
 	return 0;
+
 }
+
+
 void menu(char szo[20]){
     char a, titkos_szo[20], tippelt_betu;
     bool f = true;
     clrscr();
     while(f){
-        cyanblue();
+        purple();
         printf("Jatek szabaly(s)\n\n");
         yellow();
         printf("SZINTEK:\n");
-        green();
+        boldpink();
         printf("   Konnyu(e)\n");
         white();
         printf("   Kozepes(m)\n");
-        purple();
+        cyanblue();
         printf("   Nehez(h)\n\n");
         red();
         printf("Kilepes(q)\n");
@@ -155,9 +162,17 @@ void menu(char szo[20]){
         }
     }
 }
+
+
 void jatek_szabaly(){
-    printf("               JATEK SZABALY\n");
-    printf("A jatek lenyege, hogy kitalald a csillagok mogott rejtozkodo szot.");
+    printf("                    JATEK SZABALY\n");
+    printf("A jatek lenyege, hogy kitalald a csillagok mogott rejtozkodo szot.\n");
+    printf("Erre annyi probalkozasod van, mint a szoban levo betuk szama+3.\n");
+    printf("Az 'e' betut lenyomva a konnyu palyat valaszthatod ki, 'm' betuvel a kozepes palyat,\n");
+    printf("mig a 'h' betuvel a nehezet.");
+    printf("A 'q' betuvel kilephetsz a jatekbol.");
+    printf("Sok sikert es jo szorakozast!");
+    printf("\n\n");
 }
 
 void clrscr(){
@@ -191,10 +206,3 @@ void boldpink(){
 void white(){
     printf("\033[0m");
 }
-
-
-
-/*void kiiratas(char szo[20])
-{
-	printf("%s\n", szo);
-}*/
